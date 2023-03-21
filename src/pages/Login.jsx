@@ -14,17 +14,8 @@ const getStorageTheme = () => {
   return theme;
 };
 
-function SignUp({ toggleTheme, Icon }) {
+function Login({ toggleTheme, Icon }) {
   const {
-    firstname,
-    lastname,
-    resturantname,
-    phone,
-    email,
-    setFirstName,
-    setLastName,
-    setResturantname,
-    setPhone,
     setEmail,
     setPassword,
     signIn,
@@ -34,8 +25,32 @@ function SignUp({ toggleTheme, Icon }) {
     signInWithGoogle,
   } = useContext(DataContext);
 
+  //   let code = `${encodeURIComponent(user.photoURL)}`;
+
   //   console.log(decodeURIComponent(code));
 
+  const [btnValue, setBtnValue] = useState("Next");
+  let i = 0;
+  const animate = () => {
+    let input1 = document.querySelector(".input1");
+    let input2 = document.querySelector(".input2");
+    let btn = document.querySelector(".link-btn1");
+    let btn2 = document.querySelector(".link-btn2");
+
+    btn.style.display = "none";
+    btn2.style.display = "flex";
+    if (i === 0) {
+      input1.style.transform = "translateX(-100%)";
+      input1.style.opacity = 0;
+      setBtnValue("SignIn");
+      i += 1;
+    }
+
+    setTimeout(() => {
+      input2.style.transform = "translateX(-100%)";
+      input2.style.opacity = 1;
+    }, 500);
+  };
   let id = 1234;
   if (loading) {
     return (
@@ -59,9 +74,9 @@ function SignUp({ toggleTheme, Icon }) {
       </section>
     );
   }
-  // if (user) {
-  //   window.location.href = `/profile/${user.email}/${user.displayName}/${code}`;
-  // }
+  if (user) {
+    window.location.href = `/profile/${user.email}/${user.displayName}/${code}`;
+  }
 
   const getError = () => {
     if (error == "auth/internal-error") {
@@ -99,73 +114,27 @@ function SignUp({ toggleTheme, Icon }) {
 
           <form>
             <section className="row">
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="First Name"
-                  type={"text"}
-                  value={firstname}
-                  name="names"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Last Name"
-                  type={"text"}
-                  value={lastname}
-                  name="names"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Resturant Name"
-                  type={"text"}
-                  value={resturantname}
-                  name="names"
-                  onChange={(e) => setResturantname(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Phone"
-                  type={"tel"}
-                  value={phone}
-                  name="names"
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Email"
-                  type={"email"}
-                  value={email}
-                  name="names"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Password"
-                  type={"password"}
-                  name="names"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+              <input
+                className="input1"
+                placeholder="Enter Your email address"
+                type="email"
+                name="names"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                className="input2"
+                placeholder="Enter Your password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </section>
           </form>
           <div className="link-btn">
             <p>
               Sign in with email & <br /> password
             </p>
-            <button className="link-btn1" onClick={() => signIn()}>
-              SignIn
+            <button className="link-btn1" onClick={() => animate()}>
+              {btnValue}
               <svg
                 width="20"
                 height="20"
@@ -203,6 +172,9 @@ function SignUp({ toggleTheme, Icon }) {
                 </defs>
               </svg>
             </button>
+            <button className="link-btn2" onClick={() => signIn()}>
+              {btnValue}
+            </button>
           </div>
           <hr />
 
@@ -226,4 +198,4 @@ function SignUp({ toggleTheme, Icon }) {
   );
 }
 
-export default SignUp;
+export default Login;
