@@ -4,6 +4,7 @@ import image2 from "../assets/images/darkWater.png";
 import google from "../assets/images/google.png";
 import { useContext } from "react";
 import DataContext from "../context/DataContext";
+import chefImg from "../assets/images/chefImg.png";
 import { Link } from "react-router-dom";
 
 const getStorageTheme = () => {
@@ -15,8 +16,10 @@ const getStorageTheme = () => {
 };
 
 function Profile({ toggleTheme, Icon }) {
-  const { loading, error } = useContext(DataContext);
+  const { loading, error, profileImg, setImageUpload, upload } =
+    useContext(DataContext);
 
+  console.log(profileImg);
   //   console.log(decodeURIComponent(code));
 
   let id = 1234;
@@ -71,13 +74,27 @@ function Profile({ toggleTheme, Icon }) {
         <div className="form-div2">
           {getError()}
           <h1 className="logText">Profile Image</h1>
+          <div className="profilePageImg">
+            <img src={profileImg ? profileImg : chefImg} alt="" />
+          </div>
+          <div className="StyledInput">
+            <input
+              type={"file"}
+              onChange={(e) => setImageUpload(e.target.files[0])}
+            />
+          </div>
 
           <div className="link-btn02">
-            <button className="link-btn002" onClick={() => signIn()}>
-              Add
-            </button>
+            {!profileImg ? (
+              <button className="link-btn002" onClick={() => upload()}>
+                Add
+              </button>
+            ) : (
+              <Link className="link" to={`/login`}>
+                <button className="link-btn002">Login</button>
+              </Link>
+            )}
           </div>
-          <hr />
 
           <article className="social-links">
             <p>or login and signup with</p>

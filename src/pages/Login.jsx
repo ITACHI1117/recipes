@@ -16,8 +16,12 @@ const getStorageTheme = () => {
 
 function Login({ toggleTheme, Icon }) {
   const {
+    LogIn,
+    email,
     setEmail,
     setPassword,
+    signed,
+    allUsers,
     signIn,
     user,
     error,
@@ -29,10 +33,27 @@ function Login({ toggleTheme, Icon }) {
 
   //   console.log(decodeURIComponent(code));
 
+  const [loginUserId, setLoginInUserId] = useState("");
+
+  useEffect(() => {
+    let userEmail = email;
+    if (allUsers === undefined) {
+      return;
+    } else {
+      console.log("done");
+      allUsers.map(({ email, id, profile_picture }) => {
+        if (userEmail === email) {
+          setLoginInUserId(id);
+          console.log(id);
+        }
+      });
+    }
+  }, [allUsers, signIn]);
+
   const [btnValue, setBtnValue] = useState("Next");
   let i = 0;
   const animate = () => {
-    let input1 = document.querySelector(".input1");
+    let input1 = document.querySelector(".inputLogin");
     let input2 = document.querySelector(".input2");
     let btn = document.querySelector(".link-btn1");
     let btn2 = document.querySelector(".link-btn2");
@@ -42,7 +63,7 @@ function Login({ toggleTheme, Icon }) {
     if (i === 0) {
       input1.style.transform = "translateX(-100%)";
       input1.style.opacity = 0;
-      setBtnValue("SignIn");
+      setBtnValue("LogIn");
       i += 1;
     }
 
@@ -74,16 +95,16 @@ function Login({ toggleTheme, Icon }) {
       </section>
     );
   }
-  if (user) {
-    window.location.href = `/profile/${user.email}/${user.displayName}/${code}`;
-  }
+  // if (user) {
+  //   window.location.href = `/profile/${user.email}/${user.displayName}/${code}`;
+  // }
 
   const getError = () => {
     if (error == "auth/internal-error") {
       return <h6 className="error">NetWork Error</h6>;
     }
-    if (error == "auth/popup-closed-by-user") {
-      return <h6 className="error">Canceled SignIn</h6>;
+    if (error == "auth/user-not-found") {
+      return <h6 className="error">User not Found</h6>;
     }
     if (error == "auth/email-already-in-use") {
       return <h6 className="error">Email already In use</h6>;
@@ -91,8 +112,8 @@ function Login({ toggleTheme, Icon }) {
     if (error == "auth/invalid-email") {
       return <h6 className="error">Invalid Email</h6>;
     }
-    if (error == "auth/weak-password") {
-      return <h6 className="error">Weak Password</h6>;
+    if (error == "auth/wrong-password") {
+      return <h6 className="error">Wrong Password</h6>;
     }
   };
 
@@ -105,17 +126,17 @@ function Login({ toggleTheme, Icon }) {
       <article className="login-box">
         <div className="form-div">
           {getError()}
-          <h1 className="logText">Sign In</h1>
+          <h1 className="logText">Login</h1>
 
           <p>
-            Sign in to your account to view your user profile <br />
+            Login to your account <br />
             🙂
           </p>
 
           <form>
             <section className="row">
               <input
-                className="input1"
+                className="inputLogin"
                 placeholder="Enter Your email address"
                 type="email"
                 name="names"
@@ -131,7 +152,7 @@ function Login({ toggleTheme, Icon }) {
           </form>
           <div className="link-btn">
             <p>
-              Sign in with email & <br /> password
+              Login with email & <br /> password
             </p>
             <button className="link-btn1" onClick={() => animate()}>
               {btnValue}
@@ -172,9 +193,17 @@ function Login({ toggleTheme, Icon }) {
                 </defs>
               </svg>
             </button>
-            <button className="link-btn2" onClick={() => signIn()}>
-              {btnValue}
-            </button>
+            {!signed ? (
+              <button className="link-btn2" onClick={() => LogIn()}>
+                {btnValue}
+              </button>
+            ) : (
+              <Link className="link" to={`/home/${loginUserId}`}>
+                <button className="link-btn2" onClick={() => LogIn()}>
+                  Home
+                </button>
+              </Link>
+            )}
           </div>
           <hr />
 
