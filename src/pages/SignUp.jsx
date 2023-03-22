@@ -256,7 +256,12 @@ function SignUp({ toggleTheme, Icon }) {
           <hr />
 
           <article className="social-links">
-            <p>or login and signup with</p>
+            <p>
+              or{" "}
+              <Link className="link" to={"/login"}>
+                LOGIN
+              </Link>
+            </p>
             <section className="links-row">
               <div className="box" onClick={() => signInWithGoogle()}>
                 <img src={google} alt="facebook" />
