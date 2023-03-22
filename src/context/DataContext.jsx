@@ -111,7 +111,6 @@ export const DataProvider = ({ children }) => {
         .then((snapshot) => {
           if (snapshot.exists()) {
             setAllUsers(Object.values(snapshot.val()));
-            console.log(Object.values(snapshot.val()));
           } else {
             console.log("No data available");
           }

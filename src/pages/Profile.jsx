@@ -91,7 +91,7 @@ function Profile({ toggleTheme, Icon }) {
               </button>
             ) : (
               <Link className="link" to={`/login`}>
-                <button className="link-btn002">Login</button>
+                <button className="link-btn002Green">Login</button>
               </Link>
             )}
           </div>

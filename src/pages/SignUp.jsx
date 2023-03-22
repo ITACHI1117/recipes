@@ -5,6 +5,7 @@ import google from "../assets/images/google.png";
 import { useContext } from "react";
 import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
+import DoneComp from "../components/DoneComp";
 
 const getStorageTheme = () => {
   let theme = "light-theme";
@@ -96,70 +97,74 @@ function SignUp({ toggleTheme, Icon }) {
             Sign in to your account to view your user profile <br />
             🙂
           </p>
+          {user ? (
+            <DoneComp />
+          ) : (
+            <form>
+              <section className="row">
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="First Name"
+                    type={"text"}
+                    value={firstname}
+                    name="names"
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="Last Name"
+                    type={"text"}
+                    value={lastname}
+                    name="names"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="Resturant Name"
+                    type={"text"}
+                    value={resturantname}
+                    name="names"
+                    onChange={(e) => setResturantname(e.target.value)}
+                  />
+                </div>
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="Phone"
+                    type={"tel"}
+                    value={phone}
+                    name="names"
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="Email"
+                    type={"email"}
+                    value={email}
+                    name="names"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="girdItem">
+                  <input
+                    className="input1"
+                    placeholder="Password"
+                    type={"password"}
+                    name="names"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </section>
+            </form>
+          )}
 
-          <form>
-            <section className="row">
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="First Name"
-                  type={"text"}
-                  value={firstname}
-                  name="names"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Last Name"
-                  type={"text"}
-                  value={lastname}
-                  name="names"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Resturant Name"
-                  type={"text"}
-                  value={resturantname}
-                  name="names"
-                  onChange={(e) => setResturantname(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Phone"
-                  type={"tel"}
-                  value={phone}
-                  name="names"
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Email"
-                  type={"email"}
-                  value={email}
-                  name="names"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="girdItem">
-                <input
-                  className="input1"
-                  placeholder="Password"
-                  type={"password"}
-                  name="names"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-            </section>
-          </form>
           <div className="link-btn">
             <p>
               Sign in with email & <br /> password
@@ -206,7 +211,7 @@ function SignUp({ toggleTheme, Icon }) {
               </button>
             ) : (
               <Link className="link" to={`/profile`}>
-                <button className="link-btn1">
+                <button className="link-btn2">
                   Next
                   <svg
                     width="20"
