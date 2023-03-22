@@ -186,14 +186,9 @@ function Login({ toggleTheme, Icon }) {
           <hr />
 
           <article className="social-links">
-            <p>or login and signup with </p>
-            <section className="links-row">
-              <div className="box" onClick={() => signInWithGoogle()}>
-                <img src={google} alt="facebook" />
-
-                <h4>Google</h4>
-              </div>
-            </section>
+            <p>
+              Dont have an Account ?<Link to={`/signUp`}> SIGN UP</Link>
+            </p>
           </article>
         </div>
         <div className="img-div">

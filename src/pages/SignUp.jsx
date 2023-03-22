@@ -262,13 +262,6 @@ function SignUp({ toggleTheme, Icon }) {
                 LOGIN
               </Link>
             </p>
-            <section className="links-row">
-              <div className="box" onClick={() => signInWithGoogle()}>
-                <img src={google} alt="facebook" />
-
-                <h4>Google</h4>
-              </div>
-            </section>
           </article>
         </div>
         <div className="img-div">
