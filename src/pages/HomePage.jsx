@@ -49,38 +49,38 @@ function HomePage() {
 
   const randomMealCategory = Math.floor(Math.random() * mealCategory.length);
   //   `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
-  //   useEffect(() => {
-  //     function getData() {
-  //       setLoading(true);
-  //       fetch(
-  //         `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
-  //       )
-  //         .then((response) => response.json())
-  //         .then((data) => setCategories(data.meals));
-  //     }
-  //     if (Categories) {
-  //       setLoading(false);
-  //     }
-  //     getData();
-  //   }, []);
+  useEffect(() => {
+    function getData() {
+      setLoading(true);
+      fetch(
+        `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
+      )
+        .then((response) => response.json())
+        .then((data) => setCategories(data.meals));
+    }
+    if (Categories) {
+      setLoading(false);
+    }
+    getData();
+  }, []);
 
-  //   function filterCat(dishId) {
-  //     console.log(dishId);
-  //   }
+  function filterCat(dishId) {
+    console.log(dishId);
+  }
   if (Categories === undefined) {
-    console.log("undefined");
-    // return (
-    //   <div>
-    //     <div className="loading">
-    //       <div className="lds-ring">
-    //         <div></div>
-    //         <div></div>
-    //         <div></div>
-    //         <div></div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
+    ("");
+    return (
+      <div>
+        <div className="loading">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
   }
   async function redirect(dishId) {
     await dishId;
@@ -111,7 +111,7 @@ function HomePage() {
         <div className="Cat">
           <h1>Meals</h1>
           <div className="CatGrid">
-            {/* {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
+            {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
               return (
                 // <Link className="link" to={`/all-meals/${CatItem}`}>
                 <div
@@ -124,7 +124,7 @@ function HomePage() {
                 </div>
                 // </Link>
               );
-            })} */}
+            })}
           </div>
         </div>
       </section>
