@@ -112,7 +112,7 @@ function HomePage() {
           <div className="CatGrid">
             {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
               return (
-                // <Link className="link" to={`/all-meals/${CatItem}`}>
+                // <Link className="link" to={`/all-meals/${idMeal}`} key={idMeal}>
                 <div
                   key={idMeal}
                   className="CatItem"
