@@ -83,7 +83,7 @@ function Login({ toggleTheme, Icon }) {
   if (loginUserId !== undefined) {
     redirect();
   }
-  console.log(loginUserId);
+
   const getError = () => {
     if (error == "auth/internal-error") {
       return <h6 className="error">NetWork Error</h6>;
@@ -148,47 +148,7 @@ function Login({ toggleTheme, Icon }) {
                 Login
               </button>
             ) : (
-              <Link className="link" to={`/home/${loginUserId}`}>
-                <button className="link-btn2">
-                  Home{" "}
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_1_25)">
-                      <path
-                        d="M6.66666 16H25.3333"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M17.3333 24L25.3333 16"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M17.3333 8L25.3333 16"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_1_25">
-                        <rect width="32" height="32" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
-              </Link>
+              ""
             )}
           </div>
           <hr />
@@ -203,6 +163,7 @@ function Login({ toggleTheme, Icon }) {
           <img className="water-img" src={image} alt="" />
         </div>
       </article>
+      <img className="PhoneBackImg" src={image} alt="" />
     </section>
   );
 }

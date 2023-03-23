@@ -56,7 +56,17 @@ code {
 }
 /* containAll */
 .containAll {
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 100px;
   overflow-x: hidden;
+}
+.SectionMeals {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 /* Home page */
 .homeNav {
@@ -794,15 +804,18 @@ hr {
 .water-imgProfile {
   margin-top: 20px;
   border-radius: 30px;
-
   object-fit: cover;
   height: 200px;
   width: 200px;
   border-radius: 100%;
 }
-@media screen and (max-width: 500px) {
+/* Phone back Img */
+.PhoneBackImg {
+  display: none;
+}
+@media screen and (max-width: 800px) {
   .backBody {
-    background-color: var(--clr-bcg);
+    background-color: transparent;
     /* background-image: url(./assets/images/water.png); */
     background-size: cover;
     height: 100vh;
@@ -811,6 +824,109 @@ hr {
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+  }
+  /* Phone back Img */
+  .PhoneBackImg {
+    object-fit: cover;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    position: absolute;
+  }
+  .login-box {
+    background-color: var(--clr-form);
+    border: none;
+    transition: 0.5s;
+    border-radius: 30px;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+    z-index: 10;
+  }
+  .water-img {
+    display: none;
+  }
+  .form-div {
+    width: 60%;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* Home Message */
+  .HomeMessage h1 {
+    margin-top: 50px;
+    font-family: "Fasthand", cursive;
+    font-size: 100px;
+  }
+  .HomeMessage h2 {
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    width: 250px;
+    font-size: 30px;
+  }
+  .backBody {
+    background-color: transparent;
+    /* background-image: url(./assets/images/water.png); */
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  /* Categories*/
+  .Cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .CatGrid {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: auto auto;
+  }
+  .CatItem {
+    cursor: pointer;
+    text-align: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    padding: 20px;
+    transition: 0.5s;
+    font-family: "Poppins", sans-serif;
+  }
+  .CatItem h1 {
+    font-size: 15px;
+  }
+  .CatItem:hover {
+    scale: 1.1;
+    border: 2px solid rgb(82, 207, 82);
+  }
+  .CatItem img {
+    border-radius: 10px;
+  }
+  /* Phone back Img */
+  .PhoneBackImg {
+    object-fit: cover;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    position: absolute;
   }
   .login-box {
     background-color: var(--clr-form);
@@ -824,6 +940,7 @@ hr {
     align-items: center;
     overflow: hidden;
     justify-content: space-between;
+    z-index: 10;
   }
   .water-img {
     display: none;

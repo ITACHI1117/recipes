@@ -91,21 +91,20 @@ function HomePage() {
   }
 
   return (
-    <div className="containAll">
-      <nav className="homeNav">
-        <h1>Recipes</h1>
-        <Link to={`/profilePage/${userIdentify}`}>
-          <img src={NavProfilePic ? NavProfilePic : cheImg} alt="" />
-        </Link>
-      </nav>
-      <div className="HomeMessage">
-        <h1>Recipes</h1>
-        <h2>International Recipes All in one place</h2>
+    <>
+      <div className="containAll">
+        <nav className="homeNav">
+          <h1>Recipes</h1>
+          <Link to={`/profilePage/${userIdentify}`}>
+            <img src={NavProfilePic ? NavProfilePic : cheImg} alt="" />
+          </Link>
+        </nav>
+        <div className="HomeMessage">
+          <h1>Recipes</h1>
+          <h2>International Recipes All in one place</h2>
+        </div>
       </div>
-      <div className="backgroundHomeImg">
-        <img className="backHomeImg" src={backImg} alt="" />
-      </div>
-      <section>
+      <section className="SectionMeals">
         <h1>Search</h1>
         <SearchBox />
         <div className="Cat">
@@ -128,7 +127,10 @@ function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+      <div className="backgroundHomeImg">
+        <img className="backHomeImg" src={backImg} alt="" />
+      </div>
+    </>
   );
 }
 

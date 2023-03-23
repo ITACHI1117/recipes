@@ -84,10 +84,6 @@ function SignUp({ toggleTheme, Icon }) {
 
   return (
     <section className="backBody">
-      <div className="toggler" onClick={toggleTheme}>
-        <img className="theme-Icon" src={Icon} alt="" />
-      </div>
-
       <article className="login-box">
         <div className="form-div">
           {getError()}
@@ -268,6 +264,7 @@ function SignUp({ toggleTheme, Icon }) {
           <img className="water-img" src={image} alt="" />
         </div>
       </article>
+      <img className="PhoneBackImg" src={image} alt="" />
     </section>
   );
 }
