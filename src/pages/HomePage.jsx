@@ -6,13 +6,18 @@ import { ref, child, get } from "firebase/database";
 import backImg from "../assets/images/backImg.png";
 import cheImg from "../assets/images/chefImg.png";
 import SearchBox from "../components/SearchBox";
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const { setSearchMeal, searchMeal } = useContext(DataContext);
+
   const [NavProfilePic, setNavProfilePic] = useState("");
   const [Categories, setCategories] = useState();
   const [CatItem, setCatItem] = useState();
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const userIdentify = useLoaderData();
@@ -64,9 +69,6 @@ function HomePage() {
     getData();
   }, []);
 
-  function filterCat(dishId) {
-    console.log(dishId);
-  }
   if (Categories === undefined) {
     ("");
     return (
@@ -88,6 +90,11 @@ function HomePage() {
       // 👇 Redirects to about page, note the `replace: true`
       navigate(`/all-meals/${dishId}`, { replace: false });
     });
+  }
+
+  function logToCon(e) {
+    setSearchMeal(e);
+    console.log(searchMeal);
   }
 
   return (

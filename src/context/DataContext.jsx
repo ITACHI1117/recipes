@@ -28,6 +28,8 @@ export const DataProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [signed, setSigned] = useState(false);
   const [allUsers, setAllUsers] = useState();
+  const [searchMeal, setSearchMeal] = useState("");
+  const [text, setText] = useState("");
 
   // Uploadg()
   const [uploaded, setUploaded] = useState(false);
@@ -127,11 +129,9 @@ export const DataProvider = ({ children }) => {
     // update user Profile image in firebase realtime database
     update(reference(database, "users/" + userIdentify), {
       profile_picture: profileImg,
-    })
-      .then(console.log("saved"))
-      .catch((error) => {
-        console.log(error);
-      });
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   //   sign in with google
@@ -150,6 +150,7 @@ export const DataProvider = ({ children }) => {
         profileImg,
         signed,
         allUsers,
+        searchMeal,
         setEmail,
         user,
         error,
@@ -163,6 +164,7 @@ export const DataProvider = ({ children }) => {
         setImageUpload,
         setProfileImg,
         LogIn,
+        setSearchMeal,
       }}
     >
       {children}
