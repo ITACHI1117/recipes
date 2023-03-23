@@ -78,6 +78,7 @@ code {
   margin-top: 10px;
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 .HomeMessage {
   display: flex;
@@ -120,6 +121,52 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+/* Search Comp */
+.SearchComp input {
+  padding: 10px;
+  border: 1px solid rgb(176, 176, 176);
+  border-radius: 10px;
+  width: 70vw;
+  height: 30px;
+  margin-bottom: 50px;
+  outline: none;
+  color: black;
+}
+
+/* Categories*/
+.Cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+.CatGrid {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: auto auto auto;
+}
+.CatItem {
+  cursor: pointer;
+  text-align: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  width: 250px;
+  padding: 20px;
+  transition: 0.5s;
+  font-family: "Poppins", sans-serif;
+}
+.CatItem:hover {
+  scale: 1.1;
+  border: 2px solid rgb(82, 207, 82);
+}
+.CatItem img {
+  border-radius: 10px;
 }
 /* Welcomme background */
 .backgroundImg {

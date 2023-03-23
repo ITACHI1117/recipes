@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchBox() {
-  return <div>SearchBox</div>;
+  const [search, setSearch] = useState("");
+
+  return (
+    <div className="SearchComp">
+      <input
+        type="text"
+        placeholder="search"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+    </div>
+  );
 }
 
 export default SearchBox;

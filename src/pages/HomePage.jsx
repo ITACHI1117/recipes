@@ -5,9 +5,14 @@ import { database } from "../firebase";
 import { ref, child, get } from "firebase/database";
 import backImg from "../assets/images/backImg.png";
 import SearchBox from "../components/SearchBox";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [NavProfilePic, setNavProfilePic] = useState("");
+  const [Categories, setCategories] = useState();
+  const [CatItem, setCatItem] = useState();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const userIdentify = useLoaderData();
   useEffect(() => {
@@ -25,11 +30,60 @@ function HomePage() {
         setLoadError(error);
       });
   }, []);
+
+  const mealCategory = [
+    "Beef",
+    "Chicken",
+    "Dessert",
+    "Lamb",
+    "Miscellaneous",
+    "Pasta",
+    "Pork",
+    "Seafood",
+    "Side",
+    "Starter",
+    "Vegetarian",
+    "BreakFast",
+  ];
+
+  const randomMealCategory = Math.floor(Math.random() * mealCategory.length);
+
+  useEffect(() => {
+    function getData() {
+      setLoading(true);
+      fetch(
+        `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
+      )
+        .then((response) => response.json())
+        .then((data) => setCategories(data.meals));
+    }
+    if (Categories) {
+      setLoading(false);
+    }
+    getData();
+  }, []);
+
+  //   function filterCat(dishId) {
+  //     console.log(dishId);
+  //   }
+  if (Categories === undefined) {
+    return;
+  }
+  async function redirect(dishId) {
+    await dishId;
+    setTimeout(() => {
+      // 👇 Redirects to about page, note the `replace: true`
+      navigate(`/all-meals/${dishId}`, { replace: false });
+    });
+  }
+
   return (
     <div className="containAll">
       <nav className="homeNav">
         <h1>Recipes</h1>
-        <img src={NavProfilePic} alt="" />
+        <Link to={`/profilePage/${userIdentify}`}>
+          <img src={NavProfilePic} alt="" />
+        </Link>
       </nav>
       <div className="HomeMessage">
         <h1>Recipes</h1>
@@ -41,6 +95,25 @@ function HomePage() {
       <section>
         <h1>Search</h1>
         <SearchBox />
+        <div className="Cat">
+          <h1>Meals</h1>
+          <div className="CatGrid">
+            {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
+              return (
+                // <Link className="link" to={`/all-meals/${CatItem}`}>
+                <div
+                  key={idMeal}
+                  className="CatItem"
+                  onClick={() => redirect(idMeal)}
+                >
+                  <img src={strMealThumb} alt="" />
+                  <h1>{strMeal}</h1>
+                </div>
+                // </Link>
+              );
+            })}
+          </div>
+        </div>
       </section>
     </div>
   );

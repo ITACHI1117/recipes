@@ -12,6 +12,8 @@ import { DataProvider } from "./context/DataContext";
 import Profile from "./pages/Profile";
 import HomePage from "./pages/HomePage";
 import Welcome from "./pages/Welcome";
+import AllMeals from "./pages/AllMeals";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const router = createBrowserRouter(
@@ -27,6 +29,20 @@ function App() {
           }}
           path="/home/:id"
           element={<HomePage />}
+        />
+        <Route
+          loader={({ params }) => {
+            return params.id;
+          }}
+          path="/all-meals/:id"
+          element={<AllMeals />}
+        />
+        <Route
+          loader={({ params }) => {
+            return params.id;
+          }}
+          path="/profilePage/:id"
+          element={<ProfilePage />}
         />
       </>
     )
