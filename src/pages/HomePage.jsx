@@ -53,7 +53,7 @@ function HomePage() {
     function getData() {
       setLoading(true);
       fetch(
-        `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
+        `https://themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
       )
         .then((response) => response.json())
         .then((data) => setCategories(data.meals));
