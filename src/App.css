@@ -678,28 +678,6 @@ hr {
   height: 90px;
 }
 
-/* .custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input::before {
-  content: "+";
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 100%;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-} */
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
@@ -721,6 +699,96 @@ hr {
   cursor: pointer;
   color: var(--clr-font);
   height: 40px;
+}
+/* All Meals */
+.login-boxMeal {
+  background-color: var(--clr-form);
+  border: none;
+  transition: 0.5s;
+  border-radius: 30px;
+  width: 75vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  justify-content: space-between;
+}
+
+.form-divMeal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  margin-left: 0px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-divMeal h1 {
+  font-size: 25px;
+  color: var(--clr-login);
+  transition: 0.5s;
+  font-size: 35px;
+  font-family: "Rokkitt", serif;
+}
+.form-divMeal h2 {
+  font-size: 25px;
+  color: var(--clr-login);
+  transition: 0.5s;
+  font-size: 25px;
+  font-family: "Rokkitt", serif;
+}
+.form-divMeal p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--clr-login);
+  transition: 0.5s;
+  font-family: "Mulish", sans-serif;
+}
+.form-divMeal .Instruct {
+  text-align: start;
+  width: 70%;
+}
+/* profile page form */
+.form-div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 90px;
+  width: 40%;
+  margin-top: 50px;
+}
+.form-div2 h1 {
+  font-size: 25px;
+  color: var(--clr-login);
+  transition: 0.5s;
+  font-size: 35px;
+  font-family: "Rokkitt", serif;
+}
+.form-div2 p {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--clr-login);
+  transition: 0.5s;
+  font-family: "Mulish", sans-serif;
+}
+/* meal img */
+.img-divMeal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.water-img {
+  margin-top: 20px;
+  border-radius: 30px;
+  margin-top: 10px;
+  object-fit: cover;
+  height: 400px;
+  width: 60%;
 }
 
 @media screen and (max-width: 500px) {
