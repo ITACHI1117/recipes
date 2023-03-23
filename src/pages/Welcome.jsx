@@ -12,7 +12,7 @@ function Welcome() {
           the right place sign In Now!
         </h2>
         <Link to={`/signUp`}>
-          <button className="YellowBtn">Sign Up</button>
+          <button className="YellowBtn">Start</button>
         </Link>
       </div>
       <div className="backgroundImg">
