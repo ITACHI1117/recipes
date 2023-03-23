@@ -16,6 +16,7 @@ function AllMeals() {
   }
   const Ingridents = meal.map(
     ({
+      idMeal,
       strIngredient1,
       strIngredient2,
       strIngredient3,
@@ -46,7 +47,7 @@ function AllMeals() {
       strMeasure14,
     }) => {
       return (
-        <>
+        <div key={idMeal}>
           <p>
             {strMeasure1} - {strIngredient1}
           </p>
@@ -89,11 +90,11 @@ function AllMeals() {
           <p>
             {strMeasure14} {strIngredient14}
           </p>
-        </>
+        </div>
       );
     }
   );
-  console.log(meal);
+
   return (
     <>
       <section className="backBody">
@@ -106,11 +107,12 @@ function AllMeals() {
               strMeal,
               strInstructions,
               strYoutube,
+              idMeal,
             }) => {
               return (
-                <>
+                <div key={idMeal}>
                   <div className="img-divMeal">
-                    <img className="water-img" src={strMealThumb} alt="" />
+                    <img className="water-imgMeal" src={strMealThumb} alt="" />
                     {/* <img className="water-img2" src={image2} alt="" /> */}
                   </div>
                   <div className="form-divMeal">
@@ -133,7 +135,7 @@ function AllMeals() {
                     </p>
                   </div> */}
                   </div>
-                </>
+                </div>
               );
             }
           )}

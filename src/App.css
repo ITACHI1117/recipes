@@ -782,7 +782,7 @@ hr {
   align-items: center;
   justify-content: center;
 }
-.water-img {
+.water-imgMeal {
   margin-top: 20px;
   border-radius: 30px;
   margin-top: 10px;
@@ -790,7 +790,16 @@ hr {
   height: 400px;
   width: 60%;
 }
+/* Profile page */
+.water-imgProfile {
+  margin-top: 20px;
+  border-radius: 30px;
 
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+}
 @media screen and (max-width: 500px) {
   .backBody {
     background-color: var(--clr-bcg);

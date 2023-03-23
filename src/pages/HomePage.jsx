@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { database } from "../firebase";
 import { ref, child, get } from "firebase/database";
 import backImg from "../assets/images/backImg.png";
+import cheImg from "../assets/images/chefImg.png";
 import SearchBox from "../components/SearchBox";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +48,7 @@ function HomePage() {
   ];
 
   const randomMealCategory = Math.floor(Math.random() * mealCategory.length);
-
+  //   `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
   useEffect(() => {
     function getData() {
       setLoading(true);
@@ -67,7 +68,18 @@ function HomePage() {
   //     console.log(dishId);
   //   }
   if (Categories === undefined) {
-    return;
+    return (
+      <div>
+        <div className="loading">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
   }
   async function redirect(dishId) {
     await dishId;
@@ -82,7 +94,7 @@ function HomePage() {
       <nav className="homeNav">
         <h1>Recipes</h1>
         <Link to={`/profilePage/${userIdentify}`}>
-          <img src={NavProfilePic} alt="" />
+          <img src={NavProfilePic ? NavProfilePic : cheImg} alt="" />
         </Link>
       </nav>
       <div className="HomeMessage">
