@@ -49,20 +49,20 @@ function HomePage() {
 
   const randomMealCategory = Math.floor(Math.random() * mealCategory.length);
   //   `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
-  useEffect(() => {
-    function getData() {
-      setLoading(true);
-      fetch(
-        `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
-      )
-        .then((response) => response.json())
-        .then((data) => setCategories(data.meals));
-    }
-    if (Categories) {
-      setLoading(false);
-    }
-    getData();
-  }, []);
+  //   useEffect(() => {
+  //     function getData() {
+  //       setLoading(true);
+  //       fetch(
+  //         `https:www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory[randomMealCategory]}`
+  //       )
+  //         .then((response) => response.json())
+  //         .then((data) => setCategories(data.meals));
+  //     }
+  //     if (Categories) {
+  //       setLoading(false);
+  //     }
+  //     getData();
+  //   }, []);
 
   //   function filterCat(dishId) {
   //     console.log(dishId);
