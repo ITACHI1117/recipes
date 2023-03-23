@@ -193,7 +193,6 @@ function Login({ toggleTheme, Icon }) {
         </div>
         <div className="img-div">
           <img className="water-img" src={image} alt="" />
-          <img className="water-img2" src={image2} alt="" />
         </div>
       </article>
     </section>

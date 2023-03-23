@@ -105,6 +105,7 @@ function AllMeals() {
               strMealThumb,
               strMeal,
               strInstructions,
+              strYoutube,
             }) => {
               return (
                 <>
@@ -120,6 +121,11 @@ function AllMeals() {
                     <p className="Instruct">{strInstructions}</p>
                     <h2>Ingridents</h2>
                     {Ingridents === null ? " ww" : Ingridents}
+
+                    <h2>Watch Video</h2>
+                    <p>
+                      <a href={strYoutube}>{strYoutube}</a>
+                    </p>
 
                     {/* <div className="link-btn">
                     <p>
