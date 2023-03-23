@@ -68,18 +68,19 @@ function HomePage() {
   //     console.log(dishId);
   //   }
   if (Categories === undefined) {
-    return (
-      <div>
-        <div className="loading">
-          <div className="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      </div>
-    );
+    console.log("undefined");
+    // return (
+    //   <div>
+    //     <div className="loading">
+    //       <div className="lds-ring">
+    //         <div></div>
+    //         <div></div>
+    //         <div></div>
+    //         <div></div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
   }
   async function redirect(dishId) {
     await dishId;
@@ -110,7 +111,7 @@ function HomePage() {
         <div className="Cat">
           <h1>Meals</h1>
           <div className="CatGrid">
-            {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
+            {/* {Categories.map(({ strMeal, strMealThumb, idMeal }) => {
               return (
                 // <Link className="link" to={`/all-meals/${CatItem}`}>
                 <div
@@ -123,7 +124,7 @@ function HomePage() {
                 </div>
                 // </Link>
               );
-            })}
+            })} */}
           </div>
         </div>
       </section>
