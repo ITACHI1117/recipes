@@ -6,6 +6,7 @@ import { useContext } from "react";
 import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 import DoneComp from "../components/DoneComp";
+import { useNavigate } from "react-router-dom";
 
 const getStorageTheme = () => {
   let theme = "light-theme";
@@ -33,8 +34,8 @@ function Login({ toggleTheme, Icon }) {
   //   let code = `${encodeURIComponent(user.photoURL)}`;
 
   //   console.log(decodeURIComponent(code));
-
-  const [loginUserId, setLoginInUserId] = useState("");
+  const navigate = useNavigate();
+  const [loginUserId, setLoginInUserId] = useState();
 
   useEffect(() => {
     let userEmail = email;
@@ -49,7 +50,6 @@ function Login({ toggleTheme, Icon }) {
     }
   }, [allUsers]);
 
-  let id = 1234;
   if (loading) {
     return (
       <section className="backBody">
@@ -72,10 +72,18 @@ function Login({ toggleTheme, Icon }) {
       </section>
     );
   }
-  // if (user) {
-  //   window.location.href = `/profile/${user.email}/${user.displayName}/${code}`;
-  // }
+  async function redirect() {
+    await signed;
+    setTimeout(() => {
+      // 👇 Redirects to about page, note the `replace: true`
+      navigate(`/home/${loginUserId}`, { replace: true });
+    });
+  }
 
+  if (loginUserId !== undefined) {
+    redirect();
+  }
+  console.log(loginUserId);
   const getError = () => {
     if (error == "auth/internal-error") {
       return <h6 className="error">NetWork Error</h6>;
